@@ -1,6 +1,18 @@
-.ral{
-  font-size: 30 !important;
-  font-family: 'Raleway', sans-serif;
+body {
+   font-family: 'Roboto Slab', serif !important;
+   font-size: 2em;
+}
+
+nav {
+  background-color: #0288d1;
+}
+
+h1 {
+  font-size: 3em !important;
+}
+
+h1, h2, h3 {
+  font-family: 'Raleway', sans-serif !important;
 }
 
 .monthlys-positive {
@@ -12,4 +24,19 @@
 .balance {
   font-size: 72;
   color: #01579b;
+}
+.module-space {
+  width: 100%;
+  margin: 0 auto!important;
+}
+
+.graph {
+  width: 100%;
+  height: 100%;
+  background: #ddd;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
 }
