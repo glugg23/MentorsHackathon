@@ -1,3 +1,9 @@
 .ral{
+  font-size: 30 !important;
   font-family: 'Raleway', sans-serif;
+}
+
+.balance{
+font-size: 72;
+color: #01579b;
 }
