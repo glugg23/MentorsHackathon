@@ -5,7 +5,6 @@
 
     $api = new RestClient([
         'base_url' => "https://api.teller.io",
-        'format' => "json",
         'headers' => ['Authorization' => 'Bearer '.$api_key]
     ]);
 
