@@ -9,3 +9,7 @@
 .monthlys-negative {
   color: red;
 }
+.balance {
+  font-size: 72;
+  color: #01579b;
+}
