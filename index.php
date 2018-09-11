@@ -1,4 +1,6 @@
 <?php
+    include_once 'PRIVATE.php';
+
     require __DIR__ . '/vendor/autoload.php';
 
     $api = new RestClient([
@@ -8,4 +10,6 @@
     ]);
 
     $result = $api->get('/accounts/'.$account_info.'/transactions');
+
+    var_dump($result);
 ?>
