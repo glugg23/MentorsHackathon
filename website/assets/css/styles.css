@@ -1,3 +1,10 @@
 .ral{
   font-family: 'Raleway', sans-serif;
 }
+
+.monthlys-positive {
+  color: green;
+}
+.monthlys-negative {
+  color: red;
+}
