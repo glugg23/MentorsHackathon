@@ -61,19 +61,20 @@
             </div>
           </div>
           <div class="card-body">
-            <div class="row">
+
               <?php
                   $result = $api->get('/accounts/'.$account_info.'/transactions');
                   $array = array_slice(json_decode($result->response), 0, 20);
                   foreach ($array as $key => $value) { ?>
+                    <div class="row payments">
                     <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
                       <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
                     </div>
                     <div class="col-6"><?= $value->counterparty ?></div>
                     <div class="col-3"><?= $value->date ?></div>
-                    <div class="w-100"></div>
+                    </div>
                   <?php } ?>
-            </div>
+
           </div>
         </div>
       </div>
@@ -83,17 +84,17 @@
           <div class="card-header">
             <div class="row">
               <div class="col-9"><h3>Upcoming</h3></div>
+              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 2px;"></i></div>
             </div>
           </div>
           <div class="card-body">
-            <div class="row">
               <?php
                 $upcoming = $fluent->from('upcoming');
 
                 foreach ($upcoming as $row) {
                   $bool = $row['amount'] > 0;
                   ?>
-
+                <div class="row payments">
                   <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
                     <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                   </div>
@@ -101,16 +102,17 @@
                   <div class="col-5"> <?= $row['description']?> </div>
                   <div class="col-4"> <?= $row['date']?> </div>
 
-                  <div class="w-100"></div>
+                </div>
                 <?php } ?>
 
                 <?php
                   $monthlys = $fluent->from('monthly');
 
-                  for ($i=0; $i < 6; $i++) { 
+                  for ($i=0; $i < 6; $i++) {
                     foreach ($monthlys as $row) {
                       $bool = $row['amount'] > 0;
                       ?>
+                    <div class="row payments">
                       <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
                         <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                       </div>
@@ -118,13 +120,49 @@
                       <div class="col-5"> <?= $row['description']?> </div>
                       <div class="col-4"> <?= '2018'.(9+$i).$row['date']?> </div>
 
-                      <div class="w-100"></div>
+                    </div>
                     <?php }
                   } ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add new monthly payment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="formName">Name</label>
+                  <input type="text" class="form-control" id="formName">
+                </div>
+                <div class="form-group">
+                  <label for="formAmount">Amount</label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fas fa-pound-sign"  style="position: relative;top: 10px; margin-right: 5px;"></i></span>
+                    <input type="number" class="form-control" id="formAmount">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="formDate">Date of Payment</label>
+                  <input type="date" class="form-control" id="formDate">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
       </div>
+        </div>
     </div>
   </div>
 
