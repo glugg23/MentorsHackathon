@@ -65,7 +65,9 @@
               <?php
                   $result = $api->get('/accounts/'.$account_info.'/transactions');
 
-                  foreach ($result as $key => $value) { ?>
+                  foreach ($result as $key => $value) { 
+                    $value = array_slice($value, 0, 20);
+                    ?>
                     <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
                       <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
                     </div>
