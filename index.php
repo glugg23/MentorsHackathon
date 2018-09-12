@@ -8,7 +8,7 @@
         'headers' => ['Authorization' => 'Bearer '.$api_key],
     ]);
 
-    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
+    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username);
     $fluent = new FluentPDO($pdo);
 ?>
 
@@ -93,6 +93,23 @@
           </div>
           <div class="card-body">
             <div class="row">
+              <?php
+                $upcoming = $fluent->from('upcoming');
+
+                foreach ($upcoming as $row) {
+                  $bool = $row['amount'] > 0;
+                  echo $bool ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
+                  echo $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']);
+
+                  echo '<div class="col-5">'.$row['description'].'</div>';
+                  echo '<div class="col-4">'.$row['date'].'</div>';
+
+                  echo '</div>'
+
+                  echo '<div class="w-100"></div>';
+                }
+              ?>
+
               <div class="col-3 monthlys-positive">+&pound;10</div>
               <div class="col-5">Cash</div>
               <div class="col-4">10/09/2018</div>
