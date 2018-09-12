@@ -89,6 +89,7 @@
           <div class="card-header">
             <div class="row">
               <div class="col-9"><h3>Upcoming</h3></div>
+              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 2px;"></i></div>
             </div>
           </div>
           <div class="card-body">
@@ -113,6 +114,43 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add new monthly payment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="formName">Name</label>
+                  <input type="text" class="form-control" id="formName">
+                </div>
+                <div class="form-group">
+                  <label for="formAmount">Amount</label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fas fa-pound-sign"  style="position: relative;top: 10px; margin-right: 5px;"></i></span>
+                    <input type="number" class="form-control" id="formAmount">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="formDate">Date of Payment</label>
+                  <input type="date" class="form-control" id="formDate">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
     </div>
   </div>
 

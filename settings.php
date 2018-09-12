@@ -35,14 +35,14 @@
           <div class="card-body">
             <div class="row" id='ac1'>
               <div class="col-2 monthlys-positive">+&pound;10</div>
-              <div class="col-5">Salary</div>
-              <div class="col-4">10/09/2018</div>
+              <div class="col-6">Salary</div>
+              <div class="col-3">10/09/2018</div>
               <div class="col-1"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('ac1')"></i></div>
             </div>
             <div class="row" id='ac2'>
               <div class="col-2 monthlys-negative">-&pound;50</div>
-              <div class="col-5">Rent</div>
-              <div class="col-4">06/09/2018</div>
+              <div class="col-6">Rent</div>
+              <div class="col-3">06/09/2018</div>
               <div class="col-1"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('ac2')"></i></div>
             </div>
           </div>
