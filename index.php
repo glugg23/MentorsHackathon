@@ -112,11 +112,11 @@
                       $bool = $row['amount'] > 0;
                       ?>
                       <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
-                        <?= $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']); ?>
+                        <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                       </div>
 
                       <div class="col-5"> <?= $row['description']?> </div>
-                      <div class="col-4"> <?= '2018'.'09'.$row['date']?> </div>
+                      <div class="col-4"> <?= '2018'.(9+$i).$row['date']?> </div>
 
                       <div class="w-100"></div>
                     <?php }
