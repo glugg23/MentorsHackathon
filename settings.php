@@ -28,21 +28,21 @@
           <div class="card-header">
             <div class="row">
               <div class="col-9" style="margin-right: 20px;"><h3>Monthlies</h3></div>
-              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 2px;"></i></div>
-              <div class="col-1"><i class="fas fa-edit fa-lg" onclick="showDelete()"></i></div>
+              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 10px;color: #0288d1;"></i></div>
+              <div class="col-1"><i class="fas fa-edit fa-lg" onclick="showDelete()" style="position: relative;top: 8px;color: #0288d1;"></i></div>
             </div>
           </div>
           <div class="card-body">
             <div class="row" id='ac1'>
               <div class="col-2 monthlys-positive">+&pound;10</div>
-              <div class="col-6">Salary</div>
-              <div class="col-3">10/09/2018</div>
+              <div class="col-5">Salary</div>
+              <div class="col-4">10/09/2018</div>
               <div class="col-1"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('ac1')"></i></div>
             </div>
             <div class="row" id='ac2'>
               <div class="col-2 monthlys-negative">-&pound;50</div>
-              <div class="col-6">Rent</div>
-              <div class="col-3">06/09/2018</div>
+              <div class="col-5">Rent</div>
+              <div class="col-4">06/09/2018</div>
               <div class="col-1"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('ac2')"></i></div>
             </div>
           </div>
@@ -60,24 +60,23 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="addMonthly.php" method="post">
-
       <div class="modal-body">
+        <form>
           <div class="form-group">
             <label for="formGroupExampleInput">Name</label>
-            <input type="text" name="name" class="form-control" id="formName">
+            <input type="text" class="form-control" id="formName">
           </div>
           <div class="form-group">
             <label for="formAmount">Amount</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fas fa-pound-sign"  style="position: relative;top: 10px; margin-right: 5px;"></i></span>
-              <input type="number" name="amount" class="form-control" id="formAmount">
+              <input type="number" class="form-control" id="formAmount">
             </div>
           </div>
 
           <div class="form-group">
             <label for="formDay">Day of monthly payment</label>
-            <select multiple class="form-control" id="formDay" name="day">
+            <select multiple class="form-control" id="formDay">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -111,12 +110,12 @@
               <option>31</option>
             </select>
           </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary">Save changes</input>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
-    </form>
     </div>
   </div>
 </div>
