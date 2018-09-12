@@ -7,6 +7,9 @@
         'base_url' => "https://api.teller.io",
         'headers' => ['Authorization' => 'Bearer '.$api_key],
     ]);
+
+    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
+    $fluent = new FluentPDO($pdo);
 ?>
 
 <html>
