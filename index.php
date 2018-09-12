@@ -98,16 +98,17 @@
 
                 foreach ($upcoming as $row) {
                   $bool = $row['amount'] > 0;
-                  echo $bool ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
-                  echo $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']);
-                  echo '</div>';
+                  ?>
 
-                  echo '<div class="col-5">'.$row['description'].'</div>';
-                  echo '<div class="col-4">'.$row['date'].'</div>';
+                  <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                    <?= $bool ? '+&pound;'<?= abs($row['amount']) : '-&pound;'.abs($row['amount']); ?>
+                  </div>
 
-                  echo '<div class="w-100"></div>';
-                }
-              ?>
+                  <div class="col-5"> <?= $row['description']?> </div>
+                  <div class="col-4"> <?= $row['date']?> </div>
+
+                  <div class="w-100"></div>
+                <?php } ?>
             </div>
           </div>
         </div>
