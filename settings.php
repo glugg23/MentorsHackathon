@@ -64,19 +64,19 @@
         <form action="addMonthly.php" method="post">
           <div class="form-group">
             <label for="formGroupExampleInput">Name</label>
-            <input type="text" class="form-control" id="formName">
+            <input type="text" name="name" class="form-control" id="formName">
           </div>
           <div class="form-group">
             <label for="formAmount">Amount</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fas fa-pound-sign"  style="position: relative;top: 10px; margin-right: 5px;"></i></span>
-              <input type="number" class="form-control" id="formAmount">
+              <input type="number" name="amount" class="form-control" id="formAmount">
             </div>
           </div>
 
           <div class="form-group">
             <label for="formDay">Day of monthly payment</label>
-            <select multiple class="form-control" id="formDay">
+            <select multiple class="form-control" id="formDay" name="day">
               <option>1</option>
               <option>2</option>
               <option>3</option>
