@@ -104,7 +104,7 @@
                   echo '<div class="col-5">'.$row['description'].'</div>';
                   echo '<div class="col-4">'.$row['date'].'</div>';
 
-                  echo '</div>'
+                  echo '</div>';
 
                   echo '<div class="w-100"></div>';
                 }
