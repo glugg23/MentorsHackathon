@@ -36,7 +36,10 @@
     <div class="row" style="border-bottom: 1px solid #01579b;">
       <div class="col-md-6">
         <p class="balance">
-          &pound;1024
+          <?php 
+            $request = $api->get('/accounts/'.$account_info);
+            echo "&pound;".$request["balance"];
+          ?> 
         </p>
         <p><b>Current account</b> 40-47-42</p>
       </div>
