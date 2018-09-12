@@ -108,14 +108,6 @@
                   echo '<div class="w-100"></div>';
                 }
               ?>
-
-              <div class="col-3 monthlys-positive">+&pound;10</div>
-              <div class="col-5">Cash</div>
-              <div class="col-4">10/09/2018</div>
-              <div class="w-100"></div>
-              <div class="col-3 monthlys-negative">-&pound;50</div>
-              <div class="col-5">Rent</div>
-              <div class="col-4">06/09/2018</div>
             </div>
           </div>
         </div>
