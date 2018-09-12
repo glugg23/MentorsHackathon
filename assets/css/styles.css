@@ -40,3 +40,6 @@ h1, h2, h3 {
    padding: 0 !important;
    margin: 0 !important;
 }
+.delete{
+    display: none !important;
+}
