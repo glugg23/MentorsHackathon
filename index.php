@@ -1,3 +1,14 @@
+<?php
+    include_once 'PRIVATE.php';
+
+    require __DIR__ . '/vendor/autoload.php';
+
+    $api = new RestClient([
+        'base_url' => "https://api.teller.io",
+        'headers' => ['Authorization' => 'Bearer '.$api_key],
+    ]);
+?>
+
 <html>
 <head>
   <title>Home</title>
@@ -25,7 +36,10 @@
     <div class="row" style="border-bottom: 1px solid #01579b;">
       <div class="col-md-6">
         <p class="balance">
-          &pound;1024
+          <?php 
+            $request = $api->get('/accounts/'.$account_info);
+            echo "&pound;".$request["balance"];
+          ?> 
         </p>
         <p><b>Current account</b> 40-47-42</p>
       </div>
@@ -45,24 +59,23 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-3 monthlys-positive">+&pound;10</div>
-              <div class="col-5">Cash</div>
-              <div class="col-4">10/09/2018</div>
-              <div class="w-100"></div>
-              <div class="col-3 monthlys-negative">-&pound;17</div>
-              <div class="col-5">Sainsbury's</div>
-              <div class="col-4">08/09/2018</div>
-              <div class="w-100"></div>
-              <div class="col-3 monthlys-negative">-&pound;8</div>
-              <div class="col-5">Transfer</div>
-              <div class="col-4">06/09/2018</div>
-              <div class="col-3 monthlys-negative">-&pound;53.99</div>
-              <div class="col-5">Booze</div>
-              <div class="col-4">05/09/2018</div>
-              <div class="w-100"></div>
-              <div class="col-3 monthlys-positive">+&pound;310</div>
-              <div class="col-5">Wages</div>
-              <div class="col-4">01/09/2018</div>
+              <?php
+                  $result = $api->get('/accounts/'.$account_info.'/transactions');
+
+                  foreach ($result as $key => $value) {
+                    echo ($value->type == "credit" || $value->type == "transfer") ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
+                    
+                    echo ($value->amount > 0) ? '+&pound;' : '-&pound;';
+                    echo floor(abs($value->amount));
+                    echo "</div>";
+
+                    echo '<div class="col-6">'.$value->counterparty.'</div>';
+
+                    echo '<div class="col-3">'.$value->date.'</div>';
+
+                    echo '<div class="w-100"></div>';
+                  }
+              ?>
             </div>
           </div>
         </div>
