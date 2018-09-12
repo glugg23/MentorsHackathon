@@ -10,7 +10,11 @@
 
     $result = $api->get('/accounts/'.$account_info.'/transactions');
 
+    var_dump($result);
+
+    echo "<ul>";
     foreach ($result as $key => $value) {
-        echo $value->description;
+        echo "<li>".$value->amount.' '.$value->counterparty.' '.$value->date."</li>";
     }
+    echo "</ul>";
 ?>
