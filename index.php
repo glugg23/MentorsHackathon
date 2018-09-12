@@ -64,8 +64,8 @@
             <div class="row">
               <?php
                   $result = $api->get('/accounts/'.$account_info.'/transactions');
-
-                  foreach ($result as $key => $value) { ?>
+                  $array = array_slice(json_decode($result->response), 0, 20);
+                  foreach ($array as $key => $value) { ?>
                     <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
                       <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
                     </div>
@@ -104,6 +104,24 @@
 
                   <div class="w-100"></div>
                 <?php } ?>
+
+                <?php
+                  $monthlys = $fluent->from('monthly');
+
+                  for ($i=0; $i < 6; $i++) { 
+                    foreach ($monthlys as $row) {
+                      $bool = $row['amount'] > 0;
+                      ?>
+                      <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                        <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
+                      </div>
+
+                      <div class="col-5"> <?= $row['description']?> </div>
+                      <div class="col-4"> <?= '2018'.(9+$i).$row['date']?> </div>
+
+                      <div class="w-100"></div>
+                    <?php }
+                  } ?>
             </div>
           </div>
         </div>
