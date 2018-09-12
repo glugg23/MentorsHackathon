@@ -67,7 +67,7 @@
 
                   foreach ($result as $key => $value) { ?>
                     <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
-                      <?= ($value->amount > 0) ? '+&pound;' : '-&pound;'.floor(abs($value->amount)); ?>
+                      <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
                     </div>
                     <div class="col-6"><?= $value->counterparty ?></div>
                     <div class="col-3"><?= $value->date ?></div>
@@ -95,7 +95,7 @@
                   ?>
 
                   <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
-                    <?= $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']) ?>
+                    <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                   </div>
 
                   <div class="col-5"> <?= $row['description']?> </div>
