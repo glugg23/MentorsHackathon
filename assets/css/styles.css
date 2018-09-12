@@ -1,8 +1,12 @@
 body {
    font-family: 'Roboto Slab', serif !important;
    font-size: 2em;
+   border-bottom: 1em solid #0288d1;
 }
 
+.container{
+margin-bottom: 0.5%;
+}
 nav {
   background-color: #0288d1;
 }
@@ -42,4 +46,7 @@ h1, h2, h3 {
 }
 .delete{
     display: none !important;
+}
+.payments{
+  margin-bottom: 5px;
 }
