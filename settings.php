@@ -21,15 +21,15 @@
     </div>
   </nav>
 
-  <div class="container" style="margin-top: 5%">
+  <div class="container">
     <div class="row">
       <div class="col">
         <div class="card" style="max-width: 500px">
           <div class="card-header">
             <div class="row">
               <div class="col-9" style="margin-right: 20px;"><h3>Monthlies</h3></div>
-              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 2px;"></i></div>
-              <div class="col-1"><i class="fas fa-edit fa-lg" onclick="showDelete()"></i></div>
+              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 12px;color: #0288d1;"></i></div>
+              <div class="col-1"><i class="fas fa-edit fa-lg" onclick="showDelete()" style="position: relative;top: 10px;color: #0288d1;"></i></div>
             </div>
           </div>
           <div class="card-body">

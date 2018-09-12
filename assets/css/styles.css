@@ -5,7 +5,8 @@ body {
 }
 
 .container{
-margin-bottom: 0.5%;
+  margin-top: 5%;
+  margin-bottom: 0.5%;
 }
 nav {
   background-color: #0288d1;
