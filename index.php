@@ -101,7 +101,7 @@
                   ?>
 
                   <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
-                    <?= $bool ? '+&pound;'<?= abs($row['amount']) : '-&pound;'.abs($row['amount']) ?>
+                    <?= $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']) ?>
                   </div>
 
                   <div class="col-5"> <?= $row['description']?> </div>
