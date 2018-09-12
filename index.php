@@ -36,10 +36,10 @@
     <div class="row" style="border-bottom: 1px solid #01579b;">
       <div class="col-md-6">
         <p class="balance">
-          <?php 
+          <?php
             $request = $api->get('/accounts/'.$account_info);
-            echo "&pound;".$request["balance"];
-          ?> 
+            echo "&pound;".floor($request["balance"]);
+          ?>
         </p>
         <p><b>Current account</b> 40-47-42</p>
       </div>
@@ -64,7 +64,7 @@
 
                   foreach ($result as $key => $value) {
                     echo ($value->type == "credit" || $value->type == "transfer") ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
-                    
+
                     echo ($value->amount > 0) ? '+&pound;' : '-&pound;';
                     echo floor(abs($value->amount));
                     echo "</div>";
