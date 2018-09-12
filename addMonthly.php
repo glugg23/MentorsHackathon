@@ -6,5 +6,5 @@
 
     $values = array('amount' => $_POST['amount'], 'description' => $_POST['name'], 'date' => $_POST['day']);
 
-    $query = %fluent->insertInto('monthlys', $values)->execute();
+    $query = %fluent->insertInto('monthly', $values)->execute();
 ?>
