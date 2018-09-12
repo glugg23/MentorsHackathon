@@ -7,6 +7,9 @@
         'base_url' => "https://api.teller.io",
         'headers' => ['Authorization' => 'Bearer '.$api_key],
     ]);
+
+    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
+    $fluent = new FluentPDO($pdo);
 ?>
 
 <html>
@@ -36,10 +39,10 @@
     <div class="row" style="border-bottom: 1px solid #01579b;">
       <div class="col-md-6">
         <p class="balance">
-          <?php 
+          <?php
             $request = $api->get('/accounts/'.$account_info);
-            echo "&pound;".$request["balance"];
-          ?> 
+            echo "&pound;".floor($request["balance"]);
+          ?>
         </p>
         <p><b>Current account</b> 40-47-42</p>
       </div>
@@ -64,7 +67,7 @@
 
                   foreach ($result as $key => $value) {
                     echo ($value->type == "credit" || $value->type == "transfer") ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
-                    
+
                     echo ($value->amount > 0) ? '+&pound;' : '-&pound;';
                     echo floor(abs($value->amount));
                     echo "</div>";
@@ -90,13 +93,21 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-3 monthlys-positive">+&pound;10</div>
-              <div class="col-5">Cash</div>
-              <div class="col-4">10/09/2018</div>
-              <div class="w-100"></div>
-              <div class="col-3 monthlys-negative">-&pound;50</div>
-              <div class="col-5">Rent</div>
-              <div class="col-4">06/09/2018</div>
+              <?php
+                $upcoming = $fluent->from('upcoming');
+
+                foreach ($upcoming as $row) {
+                  $bool = $row['amount'] > 0;
+                  echo $bool ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
+                  echo $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']);
+                  echo '</div>';
+
+                  echo '<div class="col-5">'.$row['description'].'</div>';
+                  echo '<div class="col-4">'.$row['date'].'</div>';
+
+                  echo '<div class="w-100"></div>';
+                }
+              ?>
             </div>
           </div>
         </div>
