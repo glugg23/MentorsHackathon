@@ -61,7 +61,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="addMonthly.php" method="post">
           <div class="form-group">
             <label for="formGroupExampleInput">Name</label>
             <input type="text" class="form-control" id="formName">
