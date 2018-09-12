@@ -65,20 +65,14 @@
               <?php
                   $result = $api->get('/accounts/'.$account_info.'/transactions');
 
-                  foreach ($result as $key => $value) {
-                    echo ($value->type == "credit" || $value->type == "transfer") ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
-
-                    echo ($value->amount > 0) ? '+&pound;' : '-&pound;';
-                    echo floor(abs($value->amount));
-                    echo "</div>";
-
-                    echo '<div class="col-6">'.$value->counterparty.'</div>';
-
-                    echo '<div class="col-3">'.$value->date.'</div>';
-
-                    echo '<div class="w-100"></div>';
-                  }
-              ?>
+                  foreach ($result as $key => $value) { ?>
+                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                      <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
+                    </div>
+                    <div class="col-6"><?= $value->counterparty ?></div>
+                    <div class="col-3"><?= $value->date ?></div>
+                    <div class="w-100"></div>
+                  <?php } ?>
             </div>
           </div>
         </div>
@@ -101,7 +95,7 @@
                   ?>
 
                   <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
-                    <?= $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']); ?>
+                    <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                   </div>
 
                   <div class="col-5"> <?= $row['description']?> </div>
