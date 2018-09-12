@@ -97,6 +97,7 @@
                 $upcoming = $fluent->from('upcoming');
 
                 foreach ($upcoming as $row) {
+                  var_dump($row);
                   $bool = $row['amount'] > 0;
                   echo $bool ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
                   echo $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']);
