@@ -109,6 +109,24 @@
 
                   <div class="w-100"></div>
                 <?php } ?>
+
+                <?php
+                  $monthlys = $fluent->from('monthly');
+
+                  for ($i=0; $i < 6; $i++) { 
+                    foreach ($monthlys as $row) {
+                      $bool = $row['amount'] > 0;
+                      ?>
+                      <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                        <?= $bool ? '+&pound;'.abs($row['amount']) : '-&pound;'.abs($row['amount']); ?>
+                      </div>
+
+                      <div class="col-5"> <?= $row['description']?> </div>
+                      <div class="col-4"> <?= '2018'.'09'.$row['date']?> </div>
+
+                      <div class="w-100"></div>
+                    <?php }
+                  } ?>
             </div>
           </div>
         </div>
