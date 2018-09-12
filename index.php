@@ -84,7 +84,7 @@
           <div class="card-header">
             <div class="row">
               <div class="col-9"><h3>Upcoming</h3></div>
-              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 2px;"></i></div>
+              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 10px;color: #0288d1;"></i></div>
             </div>
           </div>
           <div class="card-body">
