@@ -60,14 +60,15 @@
                   $result = $api->get('/accounts/'.$account_info.'/transactions');
 
                   foreach ($result as $key => $value) {
-                    echo $value->type == "transaction" ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
+                    echo ($value->type == "credit" || $value->type == "transfer") ? '<div class="col-3 monthlys-positive">' : '<div class="col-3 monthlys-negative">';
+                    
                     echo ($value->amount > 0) ? '+&pound;' : '-&pound;';
                     echo floor(abs($value->amount));
                     echo "</div>";
 
-                    echo '<div class="col-5">'.$value->counterparty.'</div>';
+                    echo '<div class="col-6">'.$value->counterparty.'</div>';
 
-                    echo '<div class="col-4">'.$value->date.'</div>';
+                    echo '<div class="col-3">'.$value->date.'</div>';
 
                     echo '<div class="w-100"></div>';
                   }
