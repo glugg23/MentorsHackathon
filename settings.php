@@ -60,8 +60,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="addMonthly.php" method="post">
+
       <div class="modal-body">
-        <form action="addMonthly.php" method="post">
           <div class="form-group">
             <label for="formGroupExampleInput">Name</label>
             <input type="text" name="name" class="form-control" id="formName">
@@ -110,12 +111,12 @@
               <option>31</option>
             </select>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input type="submit" class="btn btn-primary">Save changes</input>
       </div>
+    </form>
     </div>
   </div>
 </div>
