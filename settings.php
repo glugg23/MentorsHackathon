@@ -14,8 +14,8 @@
     </button>
     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link active" href="settings.html">Settings</a>
+        <a class="nav-item nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#">Settings</a>
         <a class="nav-item nav-link" href="#"><i class="far fa-user-circle"></i> Profile</a>
       </div>
     </div>
