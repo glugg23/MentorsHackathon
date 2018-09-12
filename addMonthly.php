@@ -9,4 +9,7 @@
     $values = array('amount' => $_POST['amount'], 'description' => $_POST['name'], 'date' => $_POST['day']);
 
     $query = $fluent->insertInto('monthly', $values)->execute();
+
+    header('Location: https://buffr.jbarrow.me/settings.php');
+    exit;
 ?>
