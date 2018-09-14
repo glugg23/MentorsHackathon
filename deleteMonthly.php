@@ -6,5 +6,8 @@
     $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
     $fluent = new FluentPDO($pdo);
 
-    var_dump($_GET);
+    $query = $fluent->deleteFrom('monthly', $_GET['id'])->execute();
+
+    header('Location: https://buffr.jbarrow.me/settings.php');
+    exit;
 ?>

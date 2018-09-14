@@ -52,7 +52,7 @@
                   </div>
                   <div class="col-6"><?= $row['description'] ?></div>
                   <div class="col-3"><?= $row['date'] ?></div>
-                  <div class="col-1"><a href="https://buffr.jbarrow.me/deleteMonthly.php?id=<?=$i?>"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('<?='ac'.$i?>')"></i></a>></div>
+                  <div class="col-1"><a href="https://buffr.jbarrow.me/deleteMonthly.php?id=<?=$i?>"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('<?='ac'.$i?>')"></i></a></div>
                 </div>
               <?php $i++;
               } ?>
