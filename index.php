@@ -142,18 +142,18 @@
               <form>
                 <div class="form-group">
                   <label for="formName">Name</label>
-                  <input type="text" class="form-control" id="formName">
+                  <input type="text" class="form-control" id="formName" name="description">
                 </div>
                 <div class="form-group">
                   <label for="formAmount">Amount</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fas fa-pound-sign"  style="position: relative;top: 10px; margin-right: 5px;"></i></span>
-                    <input type="number" class="form-control" id="formAmount">
+                    <input type="number" class="form-control" id="formAmount" name="amount">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="formDate">Date of Payment</label>
-                  <input type="date" class="form-control" id="formDate">
+                  <input type="date" class="form-control" id="formDate" name="date">
                 </div>
               </div>
               <div class="modal-footer">
