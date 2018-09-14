@@ -155,13 +155,14 @@
                   <label for="formDate">Date of Payment</label>
                   <input type="date" class="form-control" id="formDate">
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Save Changes">
+              </div>
+            </form>
           </div>
+
         </div>
       </div>
         </div>
