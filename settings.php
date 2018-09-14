@@ -1,3 +1,12 @@
+<?php
+    include_once 'PRIVATE.php';
+
+    require __DIR__ . '/vendor/autoload.php';
+
+    $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
+    $fluent = new FluentPDO($pdo);
+?>
+
 <html>
 <head>
   <title>Home</title>
@@ -33,14 +42,28 @@
             </div>
           </div>
           <div class="card-body">
+            <?php
+              $monthlies = $fluent->from('monthly');
+              $i = 1;
+              foreach ($monthlies as $row) { ?>
+                <div class="row" id='<?='ac'.$i?>'>
+                  <div class="col-3 <?= ($row['amount'] > 0) ? 'monthlies-positive' : 'monthlies-negative' ?>">
+                    <div class="col-6"><?= $row['description'] ?></div>
+                    <div class="col-3"><?= $row['date'] ?></div>
+                    <div class="col-1"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('<?='ac'.$i?>')"></i></div>
+                  </div>
+                </div>
+              <?php $i++;
+              } ?>
+
             <div class="row" id='ac1'>
-              <div class="col-2 monthlys-positive">+&pound;10</div>
+              <div class="col-2 monthlies-positive">+&pound;10</div>
               <div class="col-6">Salary</div>
               <div class="col-3">10/09/2018</div>
               <div class="col-1"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('ac1')"></i></div>
             </div>
             <div class="row" id='ac2'>
-              <div class="col-2 monthlys-negative">-&pound;50</div>
+              <div class="col-2 monthlies-negative">-&pound;50</div>
               <div class="col-6">Rent</div>
               <div class="col-3">06/09/2018</div>
               <div class="col-1"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('ac2')"></i></div>
