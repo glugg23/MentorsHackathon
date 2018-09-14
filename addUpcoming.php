@@ -6,5 +6,10 @@
     $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
     $fluent = new FluentPDO($pdo);
 
-    var_dump($_POST);
+    $values = array('amount' => $_POST['amount'], 'description' => $_POST['description'], 'date' => $_POST['date']);
+
+    $query = $fluent->insertInto('monthly', $values)->execute();
+
+    header('Location: https://buffr.jbarrow.me/index.php');
+    exit;
 ?>
