@@ -136,6 +136,8 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <form action="addUpcoming.php" method="post">
+
             <div class="modal-body">
               <form>
                 <div class="form-group">
