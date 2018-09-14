@@ -44,18 +44,16 @@
           <div class="card-body">
             <?php
               $monthlies = $fluent->from('monthly');
-              $i = 1;
               foreach ($monthlies as $row) { ?>
-                <div class="row" id='<?='ac'.$i?>'>
+                <div class="row" id='<?='ac'.$row['id']?>'>
                   <div class="col-2 <?= ($row['amount'] > 0) ? 'monthlies-positive' : 'monthlies-negative' ?>">
                     <?= (($row['amount'] > 0) ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                   </div>
                   <div class="col-6"><?= $row['description'] ?></div>
                   <div class="col-3"><?= $row['date'] ?></div>
-                  <div class="col-1"><a href="https://buffr.jbarrow.me/deleteMonthly.php?id=<?=$i?>"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('<?='ac'.$i?>')"></i></a></div>
+                  <div class="col-1"><a href="https://buffr.jbarrow.me/deleteMonthly.php?id=<?=$row['id']?>"><i class="delete far fa-minus-square" style="position: relative;top: 4px;color: red;" onclick="remAction('<?='ac'.$row['id']?>')"></i></a></div>
                 </div>
-              <?php $i++;
-              } ?>
+              <?php } ?>
           </div>
         </div>
     	</div>
