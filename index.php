@@ -67,7 +67,7 @@
                   $array = array_slice(json_decode($result->response), 0, 20);
                   foreach ($array as $key => $value) { ?>
                     <div class="row payments">
-                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlies-positive' : 'monthlies-negative' ?>">
                       <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
                     </div>
                     <div class="col-6"><?= $value->counterparty ?></div>
@@ -95,7 +95,7 @@
                   $bool = $row['amount'] > 0;
                   ?>
                 <div class="row payments">
-                  <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                  <div class="col-3 <?= $bool ? 'monthlies-positive' : 'monthlies-negative' ?>">
                     <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                   </div>
 
@@ -106,14 +106,14 @@
                 <?php } ?>
 
                 <?php
-                  $monthlys = $fluent->from('monthly');
+                  $monthlies = $fluent->from('monthly');
 
                   for ($i=0; $i < 6; $i++) {
-                    foreach ($monthlys as $row) {
+                    foreach ($monthlies as $row) {
                       $bool = $row['amount'] > 0;
                       ?>
                     <div class="row payments">
-                      <div class="col-3 <?= $bool ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                      <div class="col-3 <?= $bool ? 'monthlies-positive' : 'monthlies-negative' ?>">
                         <?= ($bool ? '+&pound;' : '-&pound;').abs($row['amount']) ?>
                       </div>
 
