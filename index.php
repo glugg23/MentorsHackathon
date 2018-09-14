@@ -69,7 +69,7 @@
 		 foreach ($array as $key => $value) {
                     array_push($balance, floor($value->running_balance)); ?>
 		    <div class="row payments">
-                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
+                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlies-positive' : 'monthlies-negative' ?>">
                       <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
                     </div>
                     <div class="col-6"><?= $value->counterparty ?></div>
