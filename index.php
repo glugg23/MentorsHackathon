@@ -65,9 +65,11 @@
               <?php
                   $result = $api->get('/accounts/'.$account_info.'/transactions');
                   $array = array_slice(json_decode($result->response), 0, 20);
-                  foreach ($array as $key => $value) { ?>
-                    <div class="row payments">
-                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlies-positive' : 'monthlies-negative' ?>">
+                  $balance = array();
+		 foreach ($array as $key => $value) {
+                    array_push($balance, floor($value->running_balance)); ?>
+		    <div class="row payments">
+                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlys-positive' : 'monthlys-negative' ?>">
                       <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
                     </div>
                     <div class="col-6"><?= $value->counterparty ?></div>
@@ -84,7 +86,7 @@
           <div class="card-header">
             <div class="row">
               <div class="col-9"><h3>Upcoming</h3></div>
-              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 10px;color: #0288d1;"></i></div>
+              <div class="col-1"><i class="fas fa-plus-square fa-lg" data-toggle="modal" data-target="#addModal" style="position: relative;top: 2px;"></i></div>
             </div>
           </div>
           <div class="card-body">
@@ -168,29 +170,23 @@
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
+  
   google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawBasic);
+  google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
-
+      var balance = [<?php echo '"'.implode('","', $balance).'"' ?>];
       var data = new google.visualization.DataTable();
+      
       data.addColumn('number', 'X');
       data.addColumn('number', '$$$');
-
-      data.addRows([
-        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-        [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-        [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-        [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-        [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
-        [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
-        [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
-        [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
-        [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
-        [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
-        [66, 70], [67, 72], [68, 75], [69, 80]
-      ]);
+      
+      var n = 0;
+      for (var i = balance.length-1; i>=0; i--){
+	var num = parseFloat(balance[i]);
+      	data.addRow([n, num]);
+        n++;
+      }
 
       var options = {
 
