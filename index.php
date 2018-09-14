@@ -61,22 +61,20 @@
             </div>
           </div>
           <div class="card-body">
-
-              <?php
-                  $result = $api->get('/accounts/'.$account_info.'/transactions');
-                  $array = array_slice(json_decode($result->response), 0, 20);
-                  $balance = array();
-		 foreach ($array as $key => $value) {
-                    array_push($balance, floor($value->running_balance)); ?>
-		    <div class="row payments">
-                    <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlies-positive' : 'monthlies-negative' ?>">
-                      <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
-                    </div>
-                    <div class="col-6"><?= $value->counterparty ?></div>
-                    <div class="col-3"><?= $value->date ?></div>
-                    </div>
-                  <?php } ?>
-
+          <?php
+            $result = $api->get('/accounts/'.$account_info.'/transactions');
+            $array = array_slice(json_decode($result->response), 0, 20);
+            $balance = array();
+		        foreach ($array as $key => $value) {
+              array_push($balance, floor($value->running_balance)); ?>
+		          <div class="row payments">
+              <div class="col-3 <?= ($value->type == "credit" || $value->type == "transfer") ? 'monthlies-positive' : 'monthlies-negative' ?>">
+                <?= (($value->amount > 0) ? '+&pound;' : '-&pound;').floor(abs($value->amount)); ?>
+              </div>
+              <div class="col-6"><?= $value->counterparty ?></div>
+              <div class="col-3"><?= $value->date ?></div>
+              </div>
+            <?php } ?>
           </div>
         </div>
       </div>
